@@ -1,5 +1,5 @@
-package solution
+package main
 
-func GetMessage() string {
-	return ""
+func main() string {
+	fmt.Println(emoji.Sprint("Hello :world_map:!"))
 }

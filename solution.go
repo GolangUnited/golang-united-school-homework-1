@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/kyokomi/emoji"
+	"github.com/kyokomi/emoji/v2"
 )
 
 func GetMessage() string {

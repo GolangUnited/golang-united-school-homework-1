@@ -5,7 +5,7 @@ import (
 	"github.com/kyokomi/emoji/v2"
 )
 
-func solution() {
+func GetMessage() {
 	helloMessage := emoji.Sprint("Hello :world_map:!")
 	fmt.Println(helloMessage)
 }

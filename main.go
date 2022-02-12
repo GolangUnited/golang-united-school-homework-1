@@ -1,0 +1,13 @@
+package main
+
+import (
+	"github.com/kyokomi/emoji/v2"
+)
+func Hello() string {
+	message := emoji.Sprint("Hello :world_map:!")
+	return message
+}
+func main(){
+	
+	Hello()
+}

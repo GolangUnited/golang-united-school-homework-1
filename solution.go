@@ -6,6 +6,5 @@ import (
 
 func GetMessage() string {
 	returnedMsg := emoji.Sprint("Hello :world_map:!")
-	
 	return returnedMsg
 }

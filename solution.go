@@ -1,6 +1,6 @@
 package solution
 import (
-	"github.com/kyokami/emoji"
+	"github.com/kyokomi/emoji/v2"
 )
 
 func GetMessage() string{

@@ -1,7 +1,11 @@
 package main
 
-import "github.com/Propz1/golang-united-school-homework-1/solution"
+import (
+	"fmt"
+
+	"github.com/Propz1/golang-united-school-homework-1/solution"
+)
 
 func main() {
-	solution.GetMessage()
+	fmt.Print(solution.GetMessage())
 }

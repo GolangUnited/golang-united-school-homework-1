@@ -7,6 +7,6 @@ import (
 )
 
 func main() {
-	fmt.Println(g.Sprint("Hello :world_map:"))
+	fmt.Println(g.Sprint("Hello :world_map:!"))
 
 }

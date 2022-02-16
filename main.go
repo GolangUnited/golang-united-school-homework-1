@@ -2,10 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/kyokomi/emoji/v2"
+	"github.com/sergzam/golang-united-school-homework-1/internal/hello_world"
 )
 
 func main() {
-	helloWorldMessage := emoji.Sprint("Hello :world_map:!")
-	fmt.Println(helloWorldMessage)
+	fmt.Println(hello_world.Hey())
 }

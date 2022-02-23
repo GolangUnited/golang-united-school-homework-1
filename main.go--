@@ -1,0 +1,14 @@
+package main
+
+import (
+	"io"
+	"os"
+
+	"github.com/kyokomi/emoji"
+)
+
+func main() {
+	const worldMap = ":world_map:"
+	out := emoji.Sprint(worldMap)
+	io.WriteString(os.Stdout, out)
+}

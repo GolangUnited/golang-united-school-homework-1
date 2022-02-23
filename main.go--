@@ -1,12 +1,14 @@
-package solution
+package main
 
 import (
+	"io"
+	"os"
+
 	"github.com/kyokomi/emoji"
 )
 
-func GetMessage() string {
+func main() {
 	const worldMap = ":world_map:"
 	out := emoji.Sprint(worldMap)
-
-	return out
+	io.WriteString(os.Stdout, out)
 }

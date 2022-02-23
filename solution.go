@@ -9,7 +9,7 @@ import (
 
 func GetMessage() string {
 	const worldMap = ":world_map:"
-	out := emoji.Sprint("Hello ", worldMap, "!")
+	out := emoji.Sprint("Hello :world_map:!")
 	//io.WriteString(os.Stdout, out)
 	return out
 }

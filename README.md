@@ -1,15 +1,11 @@
-# Golang united school - part 1
+# Introduction task 
 
-Inside of this repository you can find all homeworks for the first part of the [Golang united school](https://community-z.com/communities/golang/golang-united-school)
+The purpose of this task is to figure out how to use basic tooling of the Golang as well as check your IDE setup.
 
-Practical assigment destributed acroos the branches `lecture-*`
+Task:
+* Initialize project with Go modules
+* Add dependency "github.com/kyokomi/emoji" to add emojy into the string
+* Using Sprint function from this package build a message "Hello 🗺️!"
 
-We use platform [Autocode](https://autocode-next.lab.epam.com) to track the homework, please use it to complete tasks.
-
-## How to use `Autocode`?
-To use autocode you must be registered on the platform (please specify your real name).
-After registration, please authorize the platform to use your `github` account, platform will automatically fork the repo to your account when you start task.
-
-You might code in any IDEA or TextEditor for the development, to sumbit the code you just need to commit it to the specific branch, after that you will have an ability to submit code on the platform and get all test results.
-
-Good Luck!
+To run tests for run cmd "go test -v ."
+Tasks considered as completed in case test is not failed

@@ -7,12 +7,8 @@ import (
 )
 
 func GetMessage() string {
-	message := "Hello" + emoji.Sprint(":world_map:")
-	// message := emoji.Sprint("Hello :map:")
-	// emoji.Println(message)
-	// ioutil.WriteFile("message.txt", []byte(message[0:len(message)-1]), 0644)
-	// emoji.Println(message[0:len(message)-1] + "!")
-	return message[0 : len(message)-1]
+	message := emoji.Sprint("Hello :world_map:")
+	return message
 }
 
 // func main() {

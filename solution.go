@@ -1,6 +1,6 @@
-package solution
+// package solution
 
-// package main
+package main
 
 import (
 	"fmt"
@@ -9,14 +9,14 @@ import (
 )
 
 func GetMessage() string {
-	message := emoji.Sprint("Hello :world_map:!")
+	message := emoji.Sprint("Hello :map:")
 	// emoji.Println(message)
 	// ioutil.WriteFile("message.txt", []byte(message[0:len(message)-1]), 0644)
 	// emoji.Println(message[0:len(message)-1] + "!")
-	fmt.Println(message)
+	fmt.Println(len(message))
 	return message
 }
 
-// func main() {
-// 	fmt.Println(GetMessage())
-// }
+func main() {
+	fmt.Println(GetMessage())
+}

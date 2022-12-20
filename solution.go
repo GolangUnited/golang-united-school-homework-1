@@ -3,16 +3,20 @@ package solution
 // package main
 
 import (
+	"fmt"
+
 	"github.com/kyokomi/emoji/v2"
 )
 
 func GetMessage() string {
-	message := emoji.Sprint("Hello :world_map:")
+	message := emoji.Sprint("Hello :world_map:!")
+	// emoji.Println(message)
 	// ioutil.WriteFile("message.txt", []byte(message[0:len(message)-1]), 0644)
-	return message[0:len(message)-1] + "!"
+	// emoji.Println(message[0:len(message)-1] + "!")
+	fmt.Println(message)
+	return message
 }
 
 // func main() {
-
-// 	ioutil.WriteFile("message.txt", []byte(GetMessage()), 0644)
+// 	fmt.Println(GetMessage())
 // }

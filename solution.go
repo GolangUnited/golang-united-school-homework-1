@@ -1,6 +1,6 @@
-// package solution
+package solution
 
-package main
+// package main
 
 import (
 	"fmt"
@@ -17,6 +17,6 @@ func GetMessage() string {
 	return message
 }
 
-func main() {
-	fmt.Println(GetMessage())
-}
+// func main() {
+// 	fmt.Println(GetMessage())
+// }

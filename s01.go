@@ -23,7 +23,7 @@ func (u *User) SetLastName(s string) {
 	u.lastName = s
 }
 
-func (u User) FullName() string {
+func (u *User) FullName() string {
 	return u.lastName + " " + u.firstName
 }
 

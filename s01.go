@@ -11,8 +11,8 @@ type User struct {
 	lastName  string
 }
 
-func New() User {
-	return User{}
+func New() UserInterface {
+	return &User{}
 }
 
 func (u *User) SetFirstName(s string) {
@@ -24,7 +24,7 @@ func (u *User) SetLastName(s string) {
 }
 
 func (u *User) FullName() string {
-	return u.firstName + " " + u.lastName
+	return u.lastName + " " + u.firstName
 }
 
 func ResetUser(user UserInterface) {

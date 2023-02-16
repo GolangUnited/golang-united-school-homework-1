@@ -33,7 +33,8 @@ func ResetUser(user UserInterface) {
 }
 
 func IsUser(input interface{}) bool {
-	return input.(UserInterface) != nil
+	_, ok := input.(UserInterface)
+	return ok
 }
 
 func ProcessUser(input UserInterface) string {

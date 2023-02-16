@@ -34,7 +34,7 @@ func ResetUser(user *User) {
   (*user).lastName = ""
 }
 
-func IUser(input interface{}) bool {
+func IsUser(input interface{}) bool {
   xType := fmt.Sprintf("%T", input)
   accpectType := fmt.Sprintf("%T", User{})
   return xType == accpectType

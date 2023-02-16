@@ -33,9 +33,14 @@ func ResetUser(user UserInterface) {
 }
 
 func IsUser(input interface{}) bool {
-	_, ok := input.(UserInterface)
+	_, ok := input.(User)
 	return ok
 }
+
+// func IsUser(input interface{}) bool {
+// 	_, ok := input.(UserInterface)
+// 	return ok
+// }
 
 func ProcessUser(input UserInterface) string {
 	input.SetLastName("Doe")

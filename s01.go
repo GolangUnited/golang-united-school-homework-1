@@ -3,9 +3,9 @@ package solution
 import "fmt"
 
 type UserInterface interface {
-    SetFirstName(string)
-    SetLastName(string)
-    FullName() string
+	SetFirstName(string)
+	SetLastName(string)
+	FullName() string
 }
 
 type User struct {
@@ -37,7 +37,7 @@ func ResetUser(u *User) {
 	u.SetLastName("")
 }
 
-func isUser(i interface{}) bool {
+func IUser(i interface{}) bool {
 	_, ok := i.(*User)
 	return ok
 }

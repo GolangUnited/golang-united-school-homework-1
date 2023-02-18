@@ -1,4 +1,4 @@
-package main
+package solution
 
 type User struct {
 	firstName string

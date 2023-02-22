@@ -44,13 +44,12 @@ func IsUser(ui interface{}) bool {
 
 	return ok
 }
-
 func ProcessUser(u UserInterface) string {
-
-	if IsUser(u.(*User)) {
+	if IsUser(u) {
 		u.SetFirstName("James")
 		u.SetLastName("Doe")
 		return u.FullName()
 	}
 	return ""
+
 }

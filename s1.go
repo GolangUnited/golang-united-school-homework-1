@@ -32,7 +32,7 @@ func ResetUser(ui UserInterface) {
 	ui.SetLastName("")
 }
 
-func IsUser(ui UserInterface) bool {
+func IsUser(ui interface{}) bool {
 	_, ok := ui.(*User)
 	return ok
 }

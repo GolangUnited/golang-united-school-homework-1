@@ -33,12 +33,21 @@ func ResetUser(ui UserInterface) {
 }
 
 func IsUser(ui interface{}) bool {
-	_, ok := ui.(User)
+	_, ok := ui.(UserInterface)
+	if ok {
+		_, ok = ui.(UserInterface).(*User)
+		return ok
+	}
+
 	return ok
 }
 
 func ProcessUser(u UserInterface) string {
-	u.SetFirstName("Jane")
-	u.SetLastName("Doe")
-	return u.FullName()
+
+	if IsUser(u.(*User)) {
+		u.SetFirstName("James")
+		u.SetLastName("Doe")
+		return u.FullName()
+	}
+	return ""
 }

@@ -33,10 +33,13 @@ func ResetUser(ui UserInterface) {
 }
 
 func IsUser(ui interface{}) bool {
-	_, ok := ui.(UserInterface)
-	if ok {
-		_, ok = ui.(UserInterface).(*User)
-		return ok
+	_, ok := ui.(User)
+	if !ok {
+		_, ok = ui.(UserInterface)
+		if ok {
+			_, ok = ui.(UserInterface).(*User)
+			return ok
+		}
 	}
 
 	return ok

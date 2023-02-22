@@ -24,7 +24,7 @@ func (u *User) SetLastName(lastName string) {
 }
 
 func (u *User) FullName() string {
-	return "'" + u.firstName + " " + u.lastName + "'"
+	return u.firstName + " " + u.lastName
 }
 
 func ResetUser(ui UserInterface) {
@@ -33,14 +33,11 @@ func ResetUser(ui UserInterface) {
 }
 
 func IsUser(ui interface{}) bool {
-	_, ok := ui.(*User)
+	_, ok := ui.(User)
 	return ok
 }
 
 func ProcessUser(u UserInterface) string {
-	if !IsUser(u) {
-		return ""
-	}
 	u.SetFirstName("Jane")
 	u.SetLastName("Doe")
 	return u.FullName()

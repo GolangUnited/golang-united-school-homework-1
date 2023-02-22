@@ -7,8 +7,8 @@ type UserInterface interface {
 }
 
 type User struct {
-	FirstName string
-	LastName  string
+	firstName string
+	lastName  string
 }
 
 func New() User {
@@ -16,15 +16,15 @@ func New() User {
 }
 
 func (u *User) SetFirstName(firstName string) {
-	u.FirstName = firstName
+	u.firstName = firstName
 }
 
 func (u *User) SetLastName(lastName string) {
-	u.LastName = lastName
+	u.lastName = lastName
 }
 
 func (u *User) FullName() string {
-	return u.FirstName + " " + u.LastName
+	return "'" + u.firstName + " " + u.lastName + "'"
 }
 
 func ResetUser(ui UserInterface) {
@@ -37,12 +37,11 @@ func IsUser(ui interface{}) bool {
 	return ok
 }
 
-func ProcessUser(u interface{}) string {
+func ProcessUser(u UserInterface) string {
 	if !IsUser(u) {
 		return ""
 	}
-	ui := u.(UserInterface)
-	ui.SetFirstName("Jane")
-	ui.SetLastName("Doe")
-	return ui.FullName()
+	u.SetFirstName("Jane")
+	u.SetLastName("Doe")
+	return u.FullName()
 }

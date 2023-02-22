@@ -23,7 +23,7 @@ func (u *User) SetLastName(lastName string) {
 	u.LastName = lastName
 }
 
-func (u *User) FullName() string {
+func (u User) FullName() string {
 	return u.FirstName + " " + u.LastName
 }
 
@@ -39,7 +39,7 @@ func IsUser(ui UserInterface) bool {
 
 func ProcessUser(ui UserInterface) string {
 	if !IsUser(ui) {
-		return "Not a user"
+		return ""
 	}
 	ui.SetFirstName("Jane")
 	ui.SetLastName("Doe")

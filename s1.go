@@ -11,8 +11,8 @@ type User struct {
 	LastName  string
 }
 
-func New() *User {
-	return &User{}
+func New() User {
+	return User{}
 }
 
 func (u *User) SetFirstName(firstName string) {
@@ -23,7 +23,7 @@ func (u *User) SetLastName(lastName string) {
 	u.LastName = lastName
 }
 
-func (u User) FullName() string {
+func (u *User) FullName() string {
 	return u.FirstName + " " + u.LastName
 }
 
@@ -37,10 +37,11 @@ func IsUser(ui interface{}) bool {
 	return ok
 }
 
-func ProcessUser(ui UserInterface) string {
-	if !IsUser(ui) {
+func ProcessUser(u interface{}) string {
+	if !IsUser(u) {
 		return ""
 	}
+	ui := u.(UserInterface)
 	ui.SetFirstName("Jane")
 	ui.SetLastName("Doe")
 	return ui.FullName()

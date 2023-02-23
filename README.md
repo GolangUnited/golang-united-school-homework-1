@@ -1,15 +1,24 @@
-# Golang united school - part 1
-
-Inside of this repository you can find all homeworks for the first part of the [Golang united school](https://community-z.com/communities/golang/golang-united-school)
-
-Practical assigment destributed acroos the branches `lecture-*`
-
-We use platform [Autocode](https://autocode-next.lab.epam.com) to track the homework, please use it to complete tasks.
-
-## How to use `Autocode`?
-To use autocode you must be registered on the platform (please specify your real name).
-After registration, please authorize the platform to use your `github` account, platform will automatically fork the repo to your account when you start task.
-
-You might code in any IDEA or TextEditor for the development, to sumbit the code you just need to commit it to the specific branch, after that you will have an ability to submit code on the platform and get all test results.
-
-Good Luck!
+OOP, structs and interfaces
+---
+Working with structs!
+We are to create User object
+```go
+type User struct {
+	
+}
+```
+- This struct **must** implement interface
+```go
+type UserInterface interface {
+    SetFirstName(string)
+    SetLastName(string)
+    FullName() string
+}
+```
+- `user.FullName()` **must** return string with format "lastName firstName"
+- lastName firstName must be unavailable to read/modify directly.
+- `New()` constructor **must** be present for `User` struct
+- Implement functions(not methods):
+  - `func ResetUser(input) ` accepts 1 param as input and resets both lastName and firstName (set to empty value)
+  - `func IsUser(input) bool ` accepts 1 param as input and return `true` is input is of type `User`
+  - `func ProcessUser(input) string` accepts 1 param as input of type `UserInterface`, sets last/first names and returns fullname

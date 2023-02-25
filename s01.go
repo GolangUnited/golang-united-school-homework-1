@@ -1,6 +1,9 @@
 package structs
 
-import "reflect"
+import (
+	"fmt"
+	"reflect"
+)
 
 type User struct {
 	firstName string
@@ -21,6 +24,10 @@ func (user *User) SetLastName(lastName string) {
 	user.lastName = lastName
 }
 
+func (user *User) FullName() string {
+	return fmt.Sprintf("%s %s", user.firstName, user.lastName)
+}
+
 func New() *User {
 	return new(User)
 }
@@ -31,8 +38,7 @@ func ResetUser(input UserInterface) {
 }
 
 func IsUser(input UserInterface) bool {
-	a := new(User)
-	return reflect.TypeOf(input) == reflect.TypeOf(a)
+	return reflect.TypeOf(input) == reflect.TypeOf("structs.User")
 }
 
 func ProcessUser(input UserInterface) string {

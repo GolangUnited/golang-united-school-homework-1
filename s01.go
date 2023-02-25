@@ -27,7 +27,7 @@ func (user *User) FullName() string {
 	return user.lastName + " " + user.firstName
 }
 
-func ResetUser(user *User) {
+func ResetUser(user User) {
 	user.firstName = ""
 	user.lastName = ""
 }

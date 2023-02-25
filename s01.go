@@ -1,9 +1,6 @@
 package structs
 
-import (
-	"fmt"
-	"reflect"
-)
+import "fmt"
 
 type User struct {
 	firstName string
@@ -16,31 +13,25 @@ type UserInterface interface {
 	FullName() string
 }
 
-func (user *User) SetFirstName(firstName string) {
-	user.firstName = firstName
+func (u *User) SetFirstName(firstname string) {
+	u.firstName = firstname
+}
+func (u *User) SetLastName(lastname string) {
+	u.lastName = lastname
+}
+func (u *User) FullName() string {
+	return u.firstName + " " + u.lastName
 }
 
-func (user *User) SetLastName(lastName string) {
-	user.lastName = lastName
+func New() User {
+	return User{}
 }
-
-func (user *User) FullName() string {
-	return fmt.Sprintf("%s %s", user.lastName, user.firstName)
+func ResetUser(user *User) {
+	user = &User{}
 }
-
-func New() *User {
-	return &User{}
+func IsUser(user User) bool {
+	return fmt.Sprintf("%T\n", user) == fmt.Sprintf("%T\n", User{})
 }
-
-func ResetUser(input *User) {
-	input.SetFirstName("")
-	input.SetLastName("")
-}
-
-func IsUser(input User) bool {
-	return reflect.TypeOf(input) == reflect.TypeOf("structs.User")
-}
-
-func ProcessUser(input UserInterface) string {
-	return input.FullName()
+func ProcessUser(ui UserInterface) string {
+	return ui.FullName()
 }

@@ -28,8 +28,8 @@ func (user *User) FullName() string {
 	return fmt.Sprintf("%s %s", user.lastName, user.firstName)
 }
 
-func New() *User {
-	return &User{}
+func New() User {
+	return User{}
 }
 
 func ResetUser(input *User) {
@@ -38,7 +38,7 @@ func ResetUser(input *User) {
 }
 
 func IsUser(input User) bool {
-	return reflect.TypeOf(input) == reflect.TypeOf("structs.User")
+	return reflect.TypeOf(input) == reflect.TypeOf("*structs.User")
 }
 
 func ProcessUser(input UserInterface) string {

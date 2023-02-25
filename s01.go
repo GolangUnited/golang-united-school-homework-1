@@ -1,9 +1,5 @@
 package structs
 
-import (
-	"fmt"
-)
-
 type UserInterface interface {
 	SetFirstName(string)
 	SetLastName(string)
@@ -37,9 +33,15 @@ func ResetUser(user *User) {
 }
 
 func IsUser(input interface{}) bool {
-	xType := fmt.Sprintf("%T", input)
-	accpectType := fmt.Sprintf("%T", User{})
-	return xType == accpectType
+	switch input.(type) {
+	case User:
+		return true
+	default:
+		return false
+	}
+	//xType := fmt.Sprintf("%T", input)
+	//accpectType := fmt.Sprintf("%T", User{})
+	//return xType == accpectType
 }
 
 func ProcessUser(input UserInterface) string {

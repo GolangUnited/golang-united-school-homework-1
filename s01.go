@@ -1,7 +1,7 @@
 package structs
 
 import (
-	"reflect"
+	"fmt"
 )
 
 type UserInterface interface {
@@ -37,7 +37,9 @@ func ResetUser(user *User) {
 }
 
 func IsUser(input interface{}) bool {
-	return reflect.TypeOf(input) == reflect.TypeOf("*structs.User")
+	xType := fmt.Sprintf("%T", input)
+	accpectType := fmt.Sprintf("%T", User{})
+	return xType == accpectType
 }
 
 func ProcessUser(input UserInterface) string {

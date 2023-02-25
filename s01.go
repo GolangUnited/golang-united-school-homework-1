@@ -15,21 +15,21 @@ func New() User {
 	return User{}
 }
 
-func (u *User) SetFirstName(firstName string) {
-	u.firstName = firstName
+func (user *User) SetFirstName(firstName string) {
+	user.firstName = firstName
 }
 
-func (u *User) SetLastName(lastName string) {
-	u.lastName = lastName
+func (user *User) SetLastName(lastName string) {
+	user.lastName = lastName
 }
 
-func (u *User) FullName() string {
-	return u.lastName + " " + u.firstName
+func (user *User) FullName() string {
+	return user.lastName + " " + user.firstName
 }
 
 func ResetUser(user *User) {
-	(*user).firstName = ""
-	(*user).lastName = ""
+	user.firstName = ""
+	user.lastName = ""
 }
 
 func IsUser(input interface{}) bool {
@@ -39,9 +39,6 @@ func IsUser(input interface{}) bool {
 	default:
 		return false
 	}
-	//xType := fmt.Sprintf("%T", input)
-	//accpectType := fmt.Sprintf("%T", User{})
-	//return xType == accpectType
 }
 
 func ProcessUser(input UserInterface) string {

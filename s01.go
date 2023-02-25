@@ -29,10 +29,10 @@ func (user *User) FullName() string {
 }
 
 func New() *User {
-	return new(User)
+	return &User{}
 }
 
-func ResetUser(input User) {
+func ResetUser(input *User) {
 	input.SetFirstName("")
 	input.SetLastName("")
 }

@@ -25,7 +25,7 @@ func (user *User) SetLastName(lastName string) {
 }
 
 func (user *User) FullName() string {
-	return fmt.Sprintf("%s %s", user.firstName, user.lastName)
+	return fmt.Sprintf("%s %s", user.lastName, user.firstName)
 }
 
 func New() *User {

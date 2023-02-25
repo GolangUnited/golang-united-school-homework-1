@@ -32,12 +32,12 @@ func New() *User {
 	return new(User)
 }
 
-func ResetUser(input UserInterface) {
+func ResetUser(input User) {
 	input.SetFirstName("")
 	input.SetLastName("")
 }
 
-func IsUser(input UserInterface) bool {
+func IsUser(input User) bool {
 	return reflect.TypeOf(input) == reflect.TypeOf("structs.User")
 }
 

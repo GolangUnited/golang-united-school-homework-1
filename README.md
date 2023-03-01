@@ -1,11 +1,59 @@
-# Introduction task 
+## IO Reader and String Task
 
-The purpose of this task is to figure out how to use basic tooling of the Golang as well as check your IDE setup.
+You own a Goal Parser that can interpret a string command.
+The command consists of an alphabet of "G", "()" and/or "(al)" in some order.
+The Goal Parser will interpret
+"G" as the string "G", "()" as the string "o", and "(al)" as the string "al".
+The interpreted strings are then concatenated in the original order.
 
-Task:
-* Initialize project with Go modules
-* Add dependency "github.com/kyokomi/emoji" to add emojy into the string
-* Using Sprint function from this package build a message "Hello 🗺️!"
+```go
+func GoalParsers(strReader *strings.Reader) string {
+	panic("Not implemented yet...")
+}
+```
 
-To run tests for run cmd "go test -v ."
-Tasks considered as completed in case test is not failed
+- Task is to implement the `GoalParsers` method based on the above requirements
+
+Example Inputs:
+```
+input: G()(al)
+output: Goal
+```
+```
+input: G()()()()(al)
+output: Gooooal
+```
+```
+input: (al)G(al)()()G
+output: alGalooG
+```
+
+
+## IO Seeker Task
+
+SeekTillHalfOfString -  contains a code snippet in Go that defines a function called
+"SeekTillHalfOfString". The function takes a string reader as input,
+seeks to the middle of the string, reads
+half of the remaining string, and returns it as a string.
+
+```go
+func SeekTillHalfOfString(strReader *strings.Reader, n int) []string {
+	panic("Not implemented yet...")
+}
+```
+
+- Task is to implement the `SeekTillHalfOfString` method based on the above requirements
+
+Example Inputs:
+```
+input: HELLO-WORLD
+output: -WORLD
+```
+```
+input: HELLOWORLD
+output: WORLD
+```
+```
+input: GOLANG-UNITED
+output: -UNITED
+```

@@ -1,7 +1,6 @@
 package homework
 
 import (
-	"fmt"
 	"io"
 	"strings"
 )
@@ -12,12 +11,11 @@ SeekTillHalfOfString -  contains a code snippet in Go that defines a function ca
 seeks to the middle of the string, reads
 half of the remaining string, and returns it as a string.
 */
-//func strReader(str string) {
-//
-//}
 
 func SeekTillHalfOfString(strReader *strings.Reader) string {
-	return ""
+	bytesArray := make([]byte, strReader.Len())
+	stringLength, _ := strReader.Read(bytesArray)
+	return string(bytesArray[stringLength/2:])
 }
 
 /*
@@ -29,22 +27,16 @@ The function returns a slice of strings containing the chunks
 */
 
 func ReaderSplit(strReader *strings.Reader, n int) []string {
-
-	var b []string
-	reader := io.Reader(strReader)
-	buf := make([]byte, n)
+	var chunks []string
+	var bytes = make([]byte, n)
 	for {
-		n, err := reader.Read(buf)
-		if err == io.EOP {
-			break
-		}
-		if err != nil {
-			fmt.Println(err)
+		n, err := strReader.Read(bytes)
+		if err == io.EOF {
 			break
 		}
 		if n > 0 {
-			b = append(b, string(buf[:n]))
+			chunks = append(chunks, string(bytes[:n]))
 		}
 	}
-	return b
+	return chunks
 }

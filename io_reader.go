@@ -78,36 +78,21 @@ func ReaderSplit(strReader *strings.Reader, n int) []string {
 }
 
 func SeekTillHalfOfString(strReader *strings.Reader) string {
-	strLength := strReader.Len()
+    strLength := strReader.Len()
 
-	_, err := strReader.Seek(int64(strLength/2), io.SeekStart)
-	if err != nil {
-		panic(err)
-	}
+    _, err := strReader.Seek(int64(strLength/2), io.SeekStart)
+    if err != nil {
+        panic(err)
+    }
 
-	buf := make([]byte, (strLength - strReader.Len()))
-	_, err = strReader.Read(buf)
-	if err != nil {
-		if err == io.EOF {
-			return string(buf)
-		}
-		panic(err)
-	}
+    buf := make([]byte, (strLength-strLength/2))
+    _, err = strReader.Read(buf)
+    if err != nil {
+        if err == io.EOF {
+            return string(buf)
+        }
+        panic(err)
+    }
 
-	if strLength%2 != 0 {
-		_, err = strReader.Seek(-1, io.SeekCurrent)
-		if err != nil {
-			panic(err)
-		}
-
-		mid := make([]byte, 1)
-		_, err = strReader.Read(mid)
-		if err != nil {
-			panic(err)
-		}
-
-		buf = append(buf, mid[0])
-	}
-
-	return string(buf)
+    return string(buf)
 }

@@ -2,23 +2,10 @@ package hard
 
 import (
 	"fmt"
+	"io"
 	"strings"
 )
 
-/*
-You own a Goal Parser that can interpret a string command.
-The command consists of an alphabet of "G", "()" and/or "(al)" in some order.
-The Goal Parser will interpret
-"G" as the string "G", "()" as the string "o", and "(al)" as the string "al".
-The interpreted strings are then concatenated in the original order.
-For example:
-input: "G()(al)
-output: Goal
-input: G()()()()(al)
-output: Gooooal
-input: (al)G(al)()()G
-output: alGalooG
-*/
 func GoalParsers(strReader *strings.Reader) string {
 
 	var (
@@ -72,4 +59,55 @@ func parse(word string) string {
 	}
 
 	return ""
+}
+
+func ReaderSplit(strReader *strings.Reader, n int) []string {
+	var chunks []string
+	buf := make([]byte, n)
+	for {
+		_, err := strReader.Read(buf)
+		if err == io.EOF {
+			if len(buf) > 0 {
+				chunks = append(chunks, string(buf[:]))
+			}
+			break
+		}
+		chunks = append(chunks, string(buf[:]))
+	}
+	return chunks
+}
+
+func SeekTillHalfOfString(strReader *strings.Reader) string {
+	strLength := strReader.Len()
+
+	_, err := strReader.Seek(int64(strLength/2), io.SeekStart)
+	if err != nil {
+		panic(err)
+	}
+
+	buf := make([]byte, (strLength - strReader.Len()))
+	_, err = strReader.Read(buf)
+	if err != nil {
+		if err == io.EOF {
+			return string(buf)
+		}
+		panic(err)
+	}
+
+	if strLength%2 != 0 {
+		_, err = strReader.Seek(-1, io.SeekCurrent)
+		if err != nil {
+			panic(err)
+		}
+
+		mid := make([]byte, 1)
+		_, err = strReader.Read(mid)
+		if err != nil {
+			panic(err)
+		}
+
+		buf = append(buf, mid[0])
+	}
+
+	return string(buf)
 }

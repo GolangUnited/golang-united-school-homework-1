@@ -1,65 +1,75 @@
-package homework
+package hard
 
 import (
 	"fmt"
-	"io"
 	"strings"
 )
 
 /*
-SeekTillHalfOfString -  contains a code snippet in Go that defines a function called
-"SeekTillHalfOfString". The function takes a string reader as input,
-seeks to the middle of the string, reads
-half of the remaining string, and returns it as a string.
+You own a Goal Parser that can interpret a string command.
+The command consists of an alphabet of "G", "()" and/or "(al)" in some order.
+The Goal Parser will interpret
+"G" as the string "G", "()" as the string "o", and "(al)" as the string "al".
+The interpreted strings are then concatenated in the original order.
+For example:
+input: "G()(al)
+output: Goal
+input: G()()()()(al)
+output: Gooooal
+input: (al)G(al)()()G
+output: alGalooG
 */
-func SeekTillHalfOfString(strReader *strings.Reader) string {
+func GoalParsers(strReader *strings.Reader) string {
+
 	var (
-		err error
+		readerBuf = make([]byte, 1024)
 	)
 
-	defer func() {
-		if b := recover(); b != nil {
-			fmt.Println("Panic: ", b)
-		}
-	}()
-
-	_, err = strReader.Seek(strReader.Size()/2, 0)
+	_, err := strReader.Read(readerBuf)
 	if err != nil {
 		panic(err)
 	}
 
-	rSize := strReader.Size() - strReader.Size()/2
-	rBuf := make([]byte, rSize)
-
-	_, err = strReader.Read(rBuf)
-	if err != nil {
-		panic(err)
-	}
-
-	return string(rBuf)
+	fmt.Println(string(readerBuf))
+	parsedString := parse(string(readerBuf))
+	return parsedString
 }
 
-/*
-ReaderSplit - contains a code snippet written in Go that
-defines a function called ReaderSplit.
-The function takes a strings.Reader and an integer n as input,
-and splits the contents of the reader into chunks of size n.
-The function returns a slice of strings containing the chunks
-*/
-func ReaderSplit(strReader *strings.Reader, n int) []string {
+func parse(word string) string {
+
 	var (
-		resp []string
-		rBuf = make([]byte, n)
+		output string
 	)
 
-	for {
-		n, err := strReader.Read(rBuf)
-		if err == io.EOF {
-			break
-		}
-
-		resp = append(resp, string(rBuf[:n]))
+	if word == "" {
+		return ""
 	}
 
-	return resp
+	for i := 0; i < len(word); i++ {
+
+		switch b := word[i]; string(b) {
+		case "G":
+			output = "G"
+		case "(":
+			output += "("
+		case ")":
+			output += ")"
+		case "a":
+			output += "a"
+		case "l":
+			output += "l"
+
+		}
+
+		switch output {
+		case "G":
+			return "G" + parse(word[i+1:])
+		case "()":
+			return "o" + parse(word[i+1:])
+		case "(al)":
+			return "al" + parse(word[i+1:])
+		}
+	}
+
+	return ""
 }

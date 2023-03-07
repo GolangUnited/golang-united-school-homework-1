@@ -60,21 +60,21 @@ import (
 // 	return ""
 // }
 
-// func ReaderSplit(strReader *strings.Reader, n int) []string {
-// 	var chunks []string
-// 	buf := make([]byte, n)
-// 	for {
-// 		_, err := strReader.Read(buf)
-// 		if err == io.EOF {
-// 			if len(buf) > 0 {
-// 				chunks = append(chunks, string(buf[:]))
-// 			}
-// 			break
-// 		}
-// 		chunks = append(chunks, string(buf[:]))
-// 	}
-// 	return chunks
-// }
+func ReaderSplit(strReader *strings.Reader, n int) []string {
+	var chunks []string
+	buf := make([]byte, n)
+	for {
+		_, err := strReader.Read(buf)
+		if err == io.EOF {
+			if len(buf) > 0 {
+				chunks = append(chunks, string(buf[:]))
+			}
+			break
+		}
+		chunks = append(chunks, string(buf[:]))
+	}
+	return chunks
+}
 
 func SeekTillHalfOfString(strReader *strings.Reader) string {
 	strLength := strReader.Len()

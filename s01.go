@@ -29,7 +29,7 @@ func New() User {
 func ResetUser(user *User) {
 	user = &User{}
 }
-func IsUser(user User) bool {
+func IsUser(user interface{}) bool {
 	return fmt.Sprintf("%T\n", user) == fmt.Sprintf("%T\n", User{})
 }
 func ProcessUser(ui UserInterface) string {

@@ -1,4 +1,4 @@
-package hard
+package homework
 
 import "strings"
 

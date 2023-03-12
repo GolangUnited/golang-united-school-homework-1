@@ -1,6 +1,7 @@
 package hard
 
 import (
+	"fmt"
 	"io"
 	"strings"
 )
@@ -12,23 +13,30 @@ seeks to the middle of the string, reads
 half of the remaining string, and returns it as a string.
 */
 func SeekTillHalfOfString(strReader *strings.Reader) string {
-	strLength := strReader.Len()
+	var (
+		err error
+	)
 
-	_, err := strReader.Seek(int64(strLength/2), io.SeekStart)
-	if err != nil {
-		panic(err)
-	}
-
-	buf := make([]byte, (strLength - strLength/2))
-	_, err = strReader.Read(buf)
-	if err != nil {
-		if err == io.EOF {
-			return string(buf)
+	defer func() {
+		if b := recover(); b != nil {
+			fmt.Println("Panic: ", b)
 		}
+	}()
+
+	_, err = strReader.Seek(strReader.Size()/2, 0)
+	if err != nil {
 		panic(err)
 	}
 
-	return string(buf)
+	rSize := strReader.Size() - strReader.Size()/2
+	rBuf := make([]byte, rSize)
+
+	_, err = strReader.Read(rBuf)
+	if err != nil {
+		panic(err)
+	}
+
+	return string(rBuf)
 }
 
 /*
@@ -45,13 +53,10 @@ func ReaderSplit(strReader *strings.Reader, n int) []string {
 		_, err := strReader.Read(buf)
 		if err == io.EOF {
 			if len(buf) > 0 {
-				chunks = append(chunks, string(buf[:]))
+				break
 			}
-			break
 		}
-		chunks = append(chunks, string(buf[:]))
+		chunks = append(chunks, string(buf[:n]))
 	}
 	return chunks
 }
-
-

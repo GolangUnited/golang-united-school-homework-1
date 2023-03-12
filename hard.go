@@ -1,6 +1,9 @@
 package homework
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 /*
 You own a Goal Parser that can interpret a string command.
@@ -19,6 +22,58 @@ output: Gooooal
 input: (al)G(al)()()G
 output: alGalooG
 */
+
 func GoalParsers(strReader *strings.Reader) string {
-	panic("Not implemented yet...")
+
+	var (
+		readerBuf = make([]byte, 1024)
+	)
+
+	_, err := strReader.Read(readerBuf)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(string(readerBuf))
+	parsedString := parse(string(readerBuf))
+	return parsedString
+}
+
+func parse(word string) string {
+
+	var (
+		output string
+	)
+
+	if word == "" {
+		return ""
+	}
+
+	for i := 0; i < len(word); i++ {
+
+		switch b := word[i]; string(b) {
+		case "G":
+			output = "G"
+		case "(":
+			output += "("
+		case ")":
+			output += ")"
+		case "a":
+			output += "a"
+		case "l":
+			output += "l"
+
+		}
+
+		switch output {
+		case "G":
+			return "G" + parse(word[i+1:])
+		case "()":
+			return "o" + parse(word[i+1:])
+		case "(al)":
+			return "al" + parse(word[i+1:])
+		}
+	}
+
+	return ""
 }

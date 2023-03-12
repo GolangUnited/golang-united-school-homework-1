@@ -1,3 +1,3 @@
-module hometask
+module homework
 
 go 1.19

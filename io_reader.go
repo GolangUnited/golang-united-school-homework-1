@@ -1,8 +1,8 @@
 package homework
 
 import (
-	"io"
-	"strings"
+  "io"
+  "strings"
 )
 
 /*
@@ -12,23 +12,23 @@ seeks to the middle of the string, reads
 half of the remaining string, and returns it as a string.
 */
 func SeekTillHalfOfString(strReader *strings.Reader) string {
-	strLength := strReader.Len()
+  strLength := strReader.Len()
 
-	_, err := strReader.Seek(int64(strLength/2), io.SeekStart)
-	if err != nil {
-		panic(err)
-	}
+  _, err := strReader.Seek(int64(strLength/2), io.SeekStart)
+  if err != nil {
+    panic(err)
+  }
 
-	buf := make([]byte, (strLength - strLength/2))
-	_, err = strReader.Read(buf)
-	if err != nil {
-		if err == io.EOF {
-			return string(buf)
-		}
-		panic(err)
-	}
+  buf := make([]byte, (strLength - strLength/2))
+  _, err = strReader.Read(buf)
+  if err != nil {
+    if err == io.EOF {
+      return string(buf)
+    }
+    panic(err)
+  }
 
-	return string(buf)
+  return string(buf)
 }
 
 /*
@@ -39,19 +39,17 @@ and splits the contents of the reader into chunks of size n.
 The function returns a slice of strings containing the chunks
 */
 func ReaderSplit(strReader *strings.Reader, n int) []string {
-	var chunks []string
-	buf := make([]byte, n)
-	for {
-		_, err := strReader.Read(buf)
-		if err == io.EOF {
-			if len(buf) > 0 {
-				chunks = append(chunks, string(buf[:]))
-			}
-			break
-		}
-		chunks = append(chunks, string(buf[:]))
-	}
-	return chunks
+  var chunks []string
+  buf := make([]byte, n)
+  for {
+    _, err := strReader.Read(buf)
+    if err == io.EOF {
+      if len(buf) > 0 {
+        chunks = append(chunks, string(buf[:]))
+      }
+      break
+    }
+    chunks = append(chunks, string(buf[:]))
+  }
+  return chunks
 }
-
-
